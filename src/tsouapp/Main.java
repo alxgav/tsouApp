@@ -17,7 +17,7 @@ public class Main extends Application {
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
         Scene scene = new Scene(root,width-150,height-150);
-        scene.getStylesheets().add("view/styles/style.css");
+        scene.getStylesheets().add("view/style/style.css");
         primaryStage.setScene(scene);
 
         primaryStage.setTitle("Hello World");
