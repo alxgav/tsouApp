@@ -2,6 +2,7 @@ package tsouapp.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ public class Controller implements Initializable {
     public void groupBoxAction(ActionEvent actionEvent) {
     }
 
-    public void ADDAction(ActionEvent actionEvent) throws IOException, BiffException {
+    public void ADDAction(ActionEvent actionEvent) throws IOException, BiffException, ParseException {
         importxls imp = new importxls();
         imp.imrev("xls");
     }
