@@ -1,18 +1,15 @@
 package tsouapp.controller;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.input.KeyEvent;
+import jxl.read.biff.BiffException;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
-import jxl.read.biff.BiffException;
-import tsouapp.data.dbConnection;
-import tsouapp.raport.importxls;
 
 /**
  *
@@ -21,6 +18,7 @@ import tsouapp.raport.importxls;
 public class Controller implements Initializable {
 
 
+    public ComboBox yearBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -34,8 +32,7 @@ public class Controller implements Initializable {
     }
 
     public void ADDAction(ActionEvent actionEvent) throws IOException, BiffException, ParseException {
-        importxls imp = new importxls();
-        imp.imrev("xls");
+
     }
 
     public void EDITAction(ActionEvent actionEvent) {

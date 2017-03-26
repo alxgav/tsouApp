@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -14,11 +16,11 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -29,268 +31,328 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="BorderPane" fx:id="BorderPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tsouapp.controller.Controller">
-    <children>
-      
-    </children>
-   <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-            <ComboBox id="yearBox" fx:id="yearBox" onAction="#yearBoxAction" prefWidth="150.0" />
-            <ComboBox id="groupBox" fx:id="groupBox" onAction="#groupBoxAction" prefWidth="150.0" />
-            <Label fx:id="kategLabel" textFill="#2f0bf8">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Label>
-            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
-            <Button id="ADD" fx:id="ADD" mnemonicParsing="false" onAction="#ADDAction" />
-            <Button fx:id="EDIT" mnemonicParsing="false" onAction="#EDITAction" text="Button" />
-            <Button fx:id="DELETE" mnemonicParsing="false" onAction="#DELETEAction" text="Button" />
-            <SplitMenuButton fx:id="PRINT" mnemonicParsing="false" text="Друк">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Анкета" />
-                <MenuItem mnemonicParsing="false" text="Заява" />
-              </items>
-            </SplitMenuButton>
-            <Button fx:id="btnExit" mnemonicParsing="false" onAction="#btnExitAction" text="Вихід з програми" />
-        </items>
-      </ToolBar>
-   </top>
-   <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="Группа">
-            <content>
-              <SplitPane dividerPositions="0.2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <items>
-                        <TableView fx:id="studentTable" editable="true" prefHeight="423.0" prefWidth="233.0" />
-                        <Pane prefHeight="423.0" prefWidth="380.0">
-                           <children>
-                              <TitledPane animated="false" layoutX="14.0" layoutY="14.0" prefHeight="209.0" prefWidth="148.0" text="ФОТО">
-                                 <content>
-                                    <VBox>
-                                       <children>
-                                          <ImageView fx:id="studentFoto" fitHeight="167.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                              <!--   <Image url="@../../../image/foto_empty.png" /> -->
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </VBox>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane layoutX="188.0" layoutY="14.0" prefHeight="266.0" prefWidth="320.0" text="Основна інформація">
-                                <content>
-                                    <VBox prefHeight="245.0" prefWidth="320.0">
-                                       <children>
-                                          <TextField fx:id="SURNAME" promptText="Призвіще" />
-                                          <TextField fx:id="FIRSTNAME" promptText="Ім'я" />
-                                          <TextField fx:id="MIDDLENAME" promptText="По батькові" />
-                                          <TextField fx:id="INN" promptText="Індивідуальний податковий номер" />
-                                          <DatePicker fx:id="BDATA" promptText="Дата народження" />
-                                          <TextField fx:id="SERPASP" promptText="Серія паспорту" />
-                                          <TextField fx:id="NUMPASP" promptText="Номер паспорту" />
-                                          <DatePicker fx:id="DATAPASP" promptText="Дата видачи" />
-                                          <TextField fx:id="VYDANPASP" promptText="Виданий" />
-                                       </children>
-                                    </VBox>
-                                </content>
-                              </TitledPane>
-                              <TitledPane animated="false" expanded="false" layoutX="527.0" layoutY="14.0" prefHeight="25.0" prefWidth="136.0" text="Оплата">
-                                <content>
-                                    <VBox prefHeight="136.0" prefWidth="109.0">
-                                       <children>
-                                          <ListView prefHeight="84.0" prefWidth="83.0" />
-                                       </children>
-                                    </VBox>
-                                </content>
-                              </TitledPane>
-                              <TitledPane animated="false" layoutX="14.0" layoutY="291.0" prefHeight="104.0" prefWidth="563.0" text="Адреса проживання">
-                                <content>
-                                    <GridPane hgap="5.0" vgap="5.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <TextField fx:id="ADDRESS" editable="false" prefHeight="25.0" prefWidth="459.0" promptText="Адреса реєстрації" />
-                                          <Button fx:id="btnAddress" mnemonicParsing="false" onAction="#btnAddressAction" text="+" GridPane.columnIndex="1" />
-                                          <CheckBox fx:id="addressChooser" mnemonicParsing="false" onAction="#addressChooserAction" text="Виправити або ввести " GridPane.rowIndex="1" />
-                                       </children>
-                                    </GridPane>
-                                </content>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </TitledPane>
-                              <TitledPane animated="false" layoutX="16.0" layoutY="398.0" prefHeight="109.0" prefWidth="588.0" text="Медична довідка" textFill="#e40f1d">
-                                 <content>
-                                    <GridPane hgap="5.0" prefHeight="83.0" prefWidth="555.0" vgap="5.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints vgrow="SOMETIMES" />
-                                          <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <TextField fx:id="MD_HOSPITAL" prefHeight="25.0" prefWidth="261.0" promptText="Медичний заклад" />
-                                          <TextField fx:id="MD_SERIJA" prefHeight="25.0" prefWidth="39.0" promptText="Серія" GridPane.columnIndex="1" />
-                                          <TextField fx:id="MD_NUMBER" prefHeight="25.0" prefWidth="119.0" promptText="Номер" GridPane.columnIndex="2" />
-                                          <DatePicker fx:id="MD_DATA" promptText="Дата видачи" GridPane.rowIndex="1" />
-                                          <TextField fx:id="MD_YEAR" prefHeight="25.0" prefWidth="73.0" promptText="Дійсна" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                       </children>
-                                    </GridPane>
-                                 </content>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </TitledPane>
-                              <TitledPane animated="false" layoutX="16.0" layoutY="515.0" prefHeight="82.0" prefWidth="589.0" text="Свідоцтво про закінчення закладу">
-                                 <content>
-                                    <GridPane hgap="5.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <DatePicker fx:id="MO_DATA" promptText="Дата видачи" GridPane.columnIndex="1" />
-                                          <TextField fx:id="MO_NUMBER" prefHeight="25.0" prefWidth="119.0" promptText="Номер" />
-                                          <Button mnemonicParsing="false" text="+" GridPane.columnIndex="2" />
-                                       </children>
-                                    </GridPane>
-                                 </content>
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </TitledPane>
-                              <TitledPane id="INSTRUKTOR_PANE" fx:id="INSTRUKTOR_PANE" animated="false" layoutX="527.0" layoutY="52.0" prefHeight="171.0" prefWidth="267.0" text="МАЙСТЕР / ІНСТРУКТОР">
-                                <content>
-                                    <VBox prefHeight="130.0" prefWidth="265.0">
-                                       <children>
-                                          <ComboBox fx:id="INSTRUKROT" prefHeight="25.0" prefWidth="245.0" promptText="МАЙСТЕР/ІНСТРУКТОР" />
-                                          <Separator prefWidth="200.0" />
-                                          <Label prefHeight="17.0" prefWidth="240.0" text="Екзамен" />
-                                          <ComboBox fx:id="ZAN1" prefHeight="25.0" prefWidth="245.0" promptText="БУДОВА" />
-                                          <ComboBox fx:id="ZAN2" prefHeight="25.0" prefWidth="245.0" promptText="ПДР" />
-                                          <ComboBox fx:id="ZAN3" prefHeight="25.0" prefWidth="245.0" promptText="ВОДІННЯ ТЗ" />
-                                       </children>
-                                    </VBox>
-                                </content>
-                              </TitledPane>
-                           </children>
-                        </Pane>
-                     </items></SplitPane>
-            </content>
-          </Tab>
-          <Tab text="Настройки группы">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <VBox layoutX="14.0" layoutY="14.0" prefHeight="242.0" prefWidth="263.0">
-                           <children>
-                              <TextField fx:id="YEARGROUP" promptText="Рік навчання" />
-                              <TextField fx:id="NUMBEROFGROUP" promptText="Група навчання" />
-                              <ComboBox fx:id="listProg" prefHeight="25.0" prefWidth="263.0" promptText="Програма навчання" />
-                              <ComboBox prefHeight="25.0" prefWidth="263.0" promptText="Категорія навчання" />
-                              <DatePicker prefHeight="25.0" prefWidth="265.0" promptText="Початок навчання" />
-                              <DatePicker prefHeight="25.0" prefWidth="263.0" promptText="Закінчення навчання" />
-                              <TextField promptText="Дні проведення навчання" />
-                              <TextField promptText="Години проведення" />
-                              <TextField promptText="Вартість навчання" />
-                           </children>
-                           <effect>
-                              <Blend mode="COLOR_BURN" />
-                           </effect>
-                          
-                        </VBox>
-                        <TitledPane animated="false" layoutX="293.0" layoutY="14.0" prefHeight="224.0" prefWidth="420.0" text="Робочий навчальний план">
-                          <content>
-                              <GridPane hgap="5.0" prefHeight="198.0" prefWidth="358.0" vgap="5.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <TitledPane animated="false" prefHeight="178.0" prefWidth="153.0" text="Дні неділі">
-                                      <content>
-                                          <VBox prefHeight="152.0" prefWidth="146.0">
-                                             <children>
-                                                <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="183.0" text="Понеділок" />
-                                                <CheckBox mnemonicParsing="false" text="Вівторок" />
-                                                <CheckBox mnemonicParsing="false" text="Середа" />
-                                                <CheckBox mnemonicParsing="false" text="Четвер" />
-                                                <CheckBox mnemonicParsing="false" text="Пятниця" />
-                                             </children>
-                                          </VBox>
-                                      </content>
-                                    </TitledPane>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
-                                       <children>
-                                          <DatePicker fx:id="minusDay" />
-                                          <Separator prefWidth="200.0" />
-                                          <Button fx:id="addDay" mnemonicParsing="false" onAction="#addDayAction" prefHeight="25.0" prefWidth="100.0" text="Вибрати дату" />
-                                          <Separator prefWidth="200.0" />
-                                          <Button mnemonicParsing="false" text="Сформувати РП" />
-                                       </children>
-                                    </VBox>
-                                    <ListView fx:id="listOfDays" onKeyPressed="#delKey" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                                 </children>
-                              </GridPane>
-                          </content>
-                        </TitledPane>
-                        <TitledPane animated="false" layoutX="14.0" layoutY="263.0" prefHeight="206.0" prefWidth="702.0" text="Викладачі">
-                          <content>
-                              <GridPane hgap="5.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                    <ColumnConstraints />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <TableView prefHeight="200.0" prefWidth="200.0">
-                                      <columns>
-                                        <TableColumn prefWidth="75.0" text="ПІБ" />
-                                        <TableColumn prefWidth="75.0" text="Вправа" />
-                                          <TableColumn prefWidth="75.0" text="ТЗ" />
-                                      </columns>
-                                    </TableView>
-                                    <VBox prefHeight="160.0" prefWidth="0.0" GridPane.columnIndex="1">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Додати " />
-                                          <Button mnemonicParsing="false" text="Видалити" />
-                                          <Button mnemonicParsing="false" text="Button" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </GridPane>
-                          </content>
-                        </TitledPane>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Графік водіння">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </center>
+<BorderPane id="BorderPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="tsouapp.controller.Controller">
+    <top>
+        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+
+                <ComboBox id="yearBox" fx:id="yearBox" onAction="#yearBoxAction" prefWidth="150.0"/>
+                <ComboBox id="groupBox" fx:id="groupBox" onAction="#groupBoxAction" prefWidth="150.0"/>
+                <Label fx:id="kategLabel" textFill="#2f0bf8">
+                    <font>
+                        <Font name="System Bold" size="14.0"/>
+                    </font>
+                </Label>
+                <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0"/>
+                <Button id="ADD" fx:id="ADD" mnemonicParsing="false" onAction="#ADDAction"/>
+                <Button fx:id="EDIT" mnemonicParsing="false" onAction="#EDITAction" text="Button"/>
+                <Button fx:id="DELETE" mnemonicParsing="false" onAction="#DELETEAction" text="Button"/>
+                <SplitMenuButton fx:id="PRINT" mnemonicParsing="false" text="Друк">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Анкета"/>
+                        <MenuItem mnemonicParsing="false" text="Заява"/>
+                    </items>
+                </SplitMenuButton>
+                <Button fx:id="btnExit" mnemonicParsing="false" onAction="#btnExitAction" text="Вихід з програми"/>
+
+        </ToolBar>
+    </top>
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Группа">
+                    <content>
+                        <SplitPane dividerPositions="0.2" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                   prefWidth="200.0">
+                            <items>
+                                <TableView fx:id="studentTable" editable="true" prefHeight="423.0" prefWidth="233.0"/>
+                                <Pane prefHeight="423.0" prefWidth="380.0">
+                                    <children>
+                                        <TitledPane animated="false" layoutX="14.0" layoutY="14.0" prefHeight="209.0"
+                                                    prefWidth="148.0" text="ФОТО">
+                                            <content>
+                                                <VBox>
+                                                    <children>
+                                                        <ImageView fx:id="studentFoto" fitHeight="167.0"
+                                                                   fitWidth="129.0" pickOnBounds="true"
+                                                                   preserveRatio="true">
+                                                            <image>
+                                                                <!--   <Image url="@../../../image/foto_empty.png" /> -->
+                                                            </image>
+                                                        </ImageView>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        <TitledPane layoutX="173.0" layoutY="14.0" prefHeight="266.0" prefWidth="320.0"
+                                                    text="Основна інформація">
+                                            <content>
+                                                <VBox prefHeight="245.0" prefWidth="320.0">
+                                                    <children>
+                                                        <TextField fx:id="SURNAME" promptText="Призвіще">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </TextField>
+                                                        <TextField fx:id="FIRSTNAME" promptText="Ім'я">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </TextField>
+                                                        <TextField fx:id="MIDDLENAME" promptText="По батькові">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </TextField>
+                                                        <TextField fx:id="INN"
+                                                                   promptText="Індивідуальний податковий номер">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </TextField>
+                                                        <DatePicker fx:id="BDATA" prefHeight="25.0" prefWidth="300.0"
+                                                                    promptText="Дата народження">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </DatePicker>
+                                                        <TextField fx:id="SERPASP" promptText="Серія та номер паспорту">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </TextField>
+                                                        <DatePicker fx:id="DATAPASP" prefHeight="25.0" prefWidth="299.0"
+                                                                    promptText="Дата видачи">
+                                                            <VBox.margin>
+                                                                <Insets bottom="3.0"/>
+                                                            </VBox.margin>
+                                                        </DatePicker>
+                                                        <TextField fx:id="VYDANPASP" promptText="Виданий"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" layoutX="504.0" layoutY="16.0" prefHeight="147.0"
+                                                    prefWidth="262.0" text="Оплата">
+                                            <content>
+                                                <VBox prefHeight="121.0" prefWidth="291.0">
+                                                    <children>
+                                                        <ListView prefHeight="84.0" prefWidth="83.0">
+                                                            <VBox.margin>
+                                                                <Insets bottom="6.0"/>
+                                                            </VBox.margin>
+                                                        </ListView>
+                                                        <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                                            <buttons>
+                                                                <Button mnemonicParsing="false" text="Button"/>
+                                                                <Button mnemonicParsing="false" text="Button"/>
+                                                            </buttons>
+                                                        </ButtonBar>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" layoutX="14.0" layoutY="291.0" prefHeight="104.0"
+                                                    prefWidth="757.0" text="Адреса проживання">
+                                            <content>
+                                                <VBox>
+                                                    <children>
+                                                        <TextArea prefHeight="200.0" prefWidth="200.0"
+                                                                  promptText="Адреса реєстрації"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                            <font>
+                                                <Font name="System Bold" size="15.0"/>
+                                            </font>
+                                        </TitledPane>
+                                        <TitledPane animated="false" layoutX="16.0" layoutY="398.0" prefHeight="115.0"
+                                                    prefWidth="755.0" text="Медична довідка" textFill="#e40f1d">
+                                            <content>
+                                                <GridPane hgap="5.0" prefHeight="83.0" prefWidth="555.0" vgap="5.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints vgrow="SOMETIMES"/>
+                                                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <TextField fx:id="MD_HOSPITAL" prefHeight="25.0"
+                                                                   prefWidth="261.0" promptText="Медичний заклад"/>
+                                                        <TextField fx:id="MD_SERIJA" prefHeight="25.0" prefWidth="39.0"
+                                                                   promptText="Серія та номер"
+                                                                   GridPane.columnIndex="1"/>
+                                                        <DatePicker fx:id="MD_DATA" prefHeight="27.0" prefWidth="451.0"
+                                                                    promptText="Дата видачи" GridPane.rowIndex="1"/>
+                                                        <TextField fx:id="MD_YEAR" prefHeight="25.0" prefWidth="73.0"
+                                                                   promptText="Дійсна" GridPane.columnIndex="1"
+                                                                   GridPane.rowIndex="1"/>
+                                                    </children>
+                                                </GridPane>
+                                            </content>
+                                            <font>
+                                                <Font name="System Bold" size="15.0"/>
+                                            </font>
+                                        </TitledPane>
+                                        <TitledPane animated="false" layoutX="16.0" layoutY="515.0" prefHeight="82.0"
+                                                    prefWidth="755.0" text="Свідоцтво про закінчення закладу">
+                                            <content>
+                                                <GridPane hgap="5.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <DatePicker fx:id="MO_DATA" promptText="Дата видачи"
+                                                                    GridPane.columnIndex="1"/>
+                                                        <TextField fx:id="MO_NUMBER" prefHeight="25.0" prefWidth="119.0"
+                                                                   promptText="Номер"/>
+                                                        <Button mnemonicParsing="false" text="+"
+                                                                GridPane.columnIndex="2"/>
+                                                    </children>
+                                                </GridPane>
+                                            </content>
+                                            <font>
+                                                <Font name="System Bold" size="15.0"/>
+                                            </font>
+                                        </TitledPane>
+                                        <TitledPane id="INSTRUKTOR_PANE" fx:id="INSTRUKTOR_PANE" animated="false"
+                                                    layoutX="504.0" layoutY="169.0" prefHeight="111.0" prefWidth="267.0"
+                                                    text="МАЙСТЕР / ІНСТРУКТОР">
+                                            <content>
+                                                <VBox prefHeight="85.0" prefWidth="248.0">
+                                                    <children>
+                                                        <ComboBox fx:id="INSTRUKROT" prefHeight="25.0" prefWidth="245.0"
+                                                                  promptText="МАЙСТЕР/ІНСТРУКТОР"/>
+                                                        <Separator prefWidth="200.0"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </Pane>
+                            </items>
+                        </SplitPane>
+                    </content>
+                </Tab>
+                <Tab text="Настройки группы">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <VBox layoutX="14.0" layoutY="14.0" prefHeight="242.0" prefWidth="263.0">
+                                    <children>
+                                        <TextField fx:id="YEARGROUP" promptText="Рік навчання"/>
+                                        <TextField fx:id="NUMBEROFGROUP" promptText="Група навчання"/>
+                                        <ComboBox fx:id="listProg" prefHeight="25.0" prefWidth="263.0"
+                                                  promptText="Програма навчання"/>
+                                        <ComboBox prefHeight="25.0" prefWidth="263.0" promptText="Категорія навчання"/>
+                                        <DatePicker prefHeight="25.0" prefWidth="265.0" promptText="Початок навчання"/>
+                                        <DatePicker prefHeight="25.0" prefWidth="263.0"
+                                                    promptText="Закінчення навчання"/>
+                                        <TextField promptText="Дні проведення навчання"/>
+                                        <TextField promptText="Години проведення"/>
+                                        <TextField promptText="Вартість навчання"/>
+                                    </children>
+                                    <effect>
+                                        <Blend mode="COLOR_BURN"/>
+                                    </effect>
+
+                                </VBox>
+                                <TitledPane animated="false" layoutX="293.0" layoutY="14.0" prefHeight="224.0"
+                                            prefWidth="420.0" text="Робочий навчальний план">
+                                    <content>
+                                        <GridPane hgap="5.0" prefHeight="198.0" prefWidth="358.0" vgap="5.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <TitledPane animated="false" prefHeight="178.0" prefWidth="153.0"
+                                                            text="Дні неділі">
+                                                    <content>
+                                                        <VBox prefHeight="152.0" prefWidth="146.0">
+                                                            <children>
+                                                                <CheckBox mnemonicParsing="false" prefHeight="17.0"
+                                                                          prefWidth="183.0" text="Понеділок"/>
+                                                                <CheckBox mnemonicParsing="false" text="Вівторок"/>
+                                                                <CheckBox mnemonicParsing="false" text="Середа"/>
+                                                                <CheckBox mnemonicParsing="false" text="Четвер"/>
+                                                                <CheckBox mnemonicParsing="false" text="Пятниця"/>
+                                                            </children>
+                                                        </VBox>
+                                                    </content>
+                                                </TitledPane>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                                                    <children>
+                                                        <DatePicker fx:id="minusDay"/>
+                                                        <Separator prefWidth="200.0"/>
+                                                        <Button fx:id="addDay" mnemonicParsing="false"
+                                                                onAction="#addDayAction" prefHeight="25.0"
+                                                                prefWidth="100.0" text="Вибрати дату"/>
+                                                        <Separator prefWidth="200.0"/>
+                                                        <Button mnemonicParsing="false" text="Сформувати РП"/>
+                                                    </children>
+                                                </VBox>
+                                                <ListView fx:id="listOfDays" onKeyPressed="#delKey" prefHeight="200.0"
+                                                          prefWidth="200.0" GridPane.columnIndex="1"/>
+                                            </children>
+                                        </GridPane>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" layoutX="14.0" layoutY="263.0" prefHeight="206.0"
+                                            prefWidth="702.0" text="Викладачі">
+                                    <content>
+                                        <GridPane hgap="5.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                                                <ColumnConstraints/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <TableView prefHeight="200.0" prefWidth="200.0">
+                                                    <columns>
+                                                        <TableColumn prefWidth="75.0" text="ПІБ"/>
+                                                        <TableColumn prefWidth="75.0" text="Вправа"/>
+                                                        <TableColumn prefWidth="75.0" text="ТЗ"/>
+                                                    </columns>
+                                                </TableView>
+                                                <VBox prefHeight="160.0" prefWidth="0.0" GridPane.columnIndex="1">
+                                                    <children>
+                                                        <Button mnemonicParsing="false" prefHeight="25.0"
+                                                                prefWidth="67.0" text="Додати "/>
+                                                        <Button mnemonicParsing="false" text="Видалити"/>
+                                                        <Button mnemonicParsing="false" text="Button"/>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </GridPane>
+                                    </content>
+                                </TitledPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Графік водіння">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+
 </BorderPane>
